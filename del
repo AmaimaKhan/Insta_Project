@@ -1,0 +1,48 @@
+<div>
+    <div>
+        <img src="{{ post.post_image.url }}" />
+    </div>
+    <div>
+        <div>
+            <div>{{ post.user.username }}</div>
+            <div><i class="fa-solid fa-ellipsis"></i></div>
+        </div>
+        <div>
+            <div style="display: flex; padding: 10px 0">
+                <button onclick="toggleLike({ post.id })" id="likeBtn">
+                    {% if liked %}
+                        Liked
+                    {% else %}
+                        Like
+                    {% endif %}
+                </button>
+                <div>
+                    <div style="margin-left: 5px; font-weight: bold; margin-top: 5px" id="like_count">{{ count }} likes</div>
+                </div>
+            </div>
+            <div>{{ post.posted_date }}</div>
+            <!-- add comments herer -->
+        </div>
+    </div>
+</div>
+<script>
+    function toggleLike(postId) {
+        var likeBtn = document.getElementById("likeBtn");
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var data = JSON.parse(this.responseText);
+    
+                if (data.liked) {
+                    likeBtn.innerHTML = "Liked";
+                } else {
+                    likeBtn.innerHTML = "Like";
+                }
+    
+                document.getElementById("like_count").innerText = ${data.count} likes;
+            }
+        };
+        xmlhttp.open("GET", /like/{postId}/, true);
+        xmlhttp.send();
+    }
+</script>

@@ -1,0 +1,9 @@
+/* interactions/static/interactions/css/style.css */
+.like-icon {
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+.comment-form {
+    margin-top: 10px;
+}

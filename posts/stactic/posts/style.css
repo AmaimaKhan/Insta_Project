@@ -1,0 +1,11 @@
+/* photos/static/photos/css/style.css */
+.photo-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.photo {
+    max-width: 300px;
+    margin: 10px;
+}

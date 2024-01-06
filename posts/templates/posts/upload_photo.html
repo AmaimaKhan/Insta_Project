@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Photo</title>
+    <link rel="stylesheet" href="{% static 'photos/css/style.css' %}">
+    <script src="{% static 'shared/js/script.js' %}"></script>
+</head>
+<body>
+    <!-- upload_photo.html -->
+    <h2>Upload Photo</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload Photo</button>
+</form>
+    <a href="{% url 'user_profile:index' %}">Home</a>
+</body>
+</html>
